@@ -1,61 +1,64 @@
-﻿int number = 4566;
-string numberInString = number.ToString();
-char[] letters = numberInString.ToArray();
+﻿using ChallengeApp;
 
-int numberOf0 = 0;
-int numberOf1 = 0;
-int numberOf2 = 0;
-int numberOf3 = 0;
-int numberOf4 = 0;
-int numberOf5 = 0;
-int numberOf6 = 0;
-int numberOf7 = 0;
-int numberOf8 = 0;
-int numberOf9 = 0;
+//User user1 = new User("Adam","aaa");
+//User user2 = new User("Monika", "mmm");
+//User user3 = new User("Zusia", "zzz");
+//User user4 = new User("Damian", "ddd");
 
-foreach (var i in letters)
+//user1.AddScore(5);
+//user1.AddScore(6);
+//var result = user1.Result;
+//Console.WriteLine(result);
+
+Employee employee1 = new Employee("Jan", "Nowak", 30);
+Employee employee2 = new Employee("Anna", "Nowak", 28);
+Employee employee3 = new Employee("Ewa", "Kowalska", 24);
+
+employee1.AddScore(8);
+employee1.AddScore(4);
+employee1.AddScore(3);
+employee1.AddScore(5);
+employee1.AddScore(7);
+employee2.AddScore(4);
+employee2.AddScore(9);
+employee2.AddScore(4);
+employee2.AddScore(10);
+employee2.AddScore(1);
+employee3.AddScore(6);
+employee3.AddScore(4);
+employee3.AddScore(2);
+employee3.AddScore(5);
+employee3.AddScore(7);
+
+List<Employee> employees = new List<Employee>();
+employees.Add(employee1);
+employees.Add(employee2);
+employees.Add(employee3);
+
+int maxResultOfEmployee = 0;
+Employee employeeWithMaxResult = null;
+
+foreach (Employee employee in employees)
 {
-    if (i == '0')
+    if (employee.MaxGrade > maxResultOfEmployee)
     {
-        numberOf0++;
-    }
-    else if (i == '1')
-    {
-        numberOf1++;
-    }
-    else if (i == '2')
-    {
-        numberOf2++;
-    }
-    else if (i == '3')
-    {
-        numberOf3++;
-    }
-    else if (i == '4')
-    {
-        numberOf4++;
-    }
-    else if (i == '5')
-    {
-        numberOf5++;
-    }
-    else if (i == '6')
-    {
-        numberOf6++;
-    }
-    else if (i == '7')
-    {
-        numberOf7++;
-    }
-    else if (i == '8')
-    {
-        numberOf8++;
-    }
-    else if (i == '9')
-    {
-        numberOf9++;
+        maxResultOfEmployee = employee.MaxGrade;
+        employeeWithMaxResult = employee;
     }
 }
 
-Console.WriteLine("Wyniki dla liczby " + numberInString + "\r\n0 => " + numberOf0 + "\r\n1 => " + numberOf1 + "\r\n2 => " + numberOf2 + "\r\n3 => " + numberOf3
-    + "\r\n4 => " + numberOf4 + "\r\n5 => " + numberOf5 + "\r\n6 => " + numberOf6 + "\r\n7 => " + numberOf7 + "\r\n8 => " + numberOf8 + "\r\n9 => " + numberOf9);
+Console.WriteLine("Pracownik z najwyższą oceną to: " + employeeWithMaxResult.ForeName + " " + employeeWithMaxResult.SurName + " w wieku " + employeeWithMaxResult.Age + " z wynikiem " + maxResultOfEmployee);
+
+//zadania dodatkowe
+//1. Odwrócenie liczby
+//int number = 1387;
+//string numberAsString = number.ToString();
+//char[] chars = numberAsString.ToCharArray();
+//string res = "";
+
+//for (int i = chars.Length-1; i >= 0; i--)
+//{
+//    res += chars[i].ToString();
+//}
+
+//Console.WriteLine(res);
